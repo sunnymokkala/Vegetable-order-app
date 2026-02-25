@@ -14,7 +14,7 @@ deployment:
     app: vegetable-order-app
   port:  3000
 image:
-    repository: vasist/vegetable-order-app:v1.0.1
+    repository: akash/vegetable-order-app:v1.0.1
     tag: v1.0.1
     env:
       - name: MONGODB_URI
