@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: veg-deployment
+  namespace: akash-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: veg
+  template:
+    metadata:
+      labels:
+        app: veg
+    spec:
+      containers:
+      - name: veg-container
+        image: vasist/vegetable-order-app:v1.0.1
+        ports:
+        - containerPort: 3000
+        env:
+          - name: MONGODB_URI
+            valueFrom:
+              configMapKeyRef:
+                name: configmap
+                key: MONGODB_URI
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: configmap
+                key: PORT
